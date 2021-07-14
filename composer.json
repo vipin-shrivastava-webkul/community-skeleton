@@ -1,54 +1,51 @@
 {
-    "name": "uvdesk/community-skeleton",
-    "description": "UVDesk Community Helpdesk Project Skeleton",
     "type": "project",
-    "license": "MIT",
+    "license": "proprietary",
     "require": {
-        "php": "^7.2",
+        "php": "^7.2 || ^8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "doctrine/doctrine-bundle": "^1.12.13",
         "doctrine/doctrine-fixtures-bundle": "^3.4.0",
         "doctrine/doctrine-migrations-bundle": "^2.2.2",
         "google/recaptcha": "^1.2.4",
         "ocramius/proxy-manager": "2.2.3",
-        "knplabs/knp-paginator-bundle": "^4.1.1",
+        "knplabs/knp-paginator-bundle": "^5.4.0",
         "sensio/framework-extra-bundle": "^5.5.3",
-        "symfony/asset": "4.3.*",
-        "symfony/console": "4.3.*",
-        "symfony/dotenv": "4.3.*",
-        "symfony/expression-language": "4.3.*",
+        "symfony/asset": "4.4.*",
+        "symfony/console": "4.4.*",
+        "symfony/dotenv": "4.4.*",
+        "symfony/expression-language": "4.4.*",
         "symfony/flex": "^1.12.2",
-        "symfony/form": "4.3.*",
-        "symfony/framework-bundle": "4.3.*",
-        "symfony/http-client": "4.3.*",
-        "symfony/intl": "4.3.*",
+        "symfony/form": "^4.4.25",
+        "symfony/framework-bundle": "4.4.*",
+        "symfony/http-client": "4.4.*",
+        "symfony/intl": "4.4.*",
         "symfony/monolog-bundle": "^3.6.0",
         "symfony/orm-pack": "*",
-        "symfony/process": "4.3.*",
-        "symfony/security-bundle": "4.3.*",
+        "symfony/process": "4.4.*",
+        "symfony/security-bundle": "4.4.*",
         "symfony/serializer-pack": "*",
         "symfony/swiftmailer-bundle": "^3.4.0",
-        "symfony/translation": "4.3.*",
-        "symfony/twig-bundle": "4.3.*",
-        "symfony/validator": "4.3.*",
-        "symfony/var-dumper": "4.3.*",
-        "symfony/web-link": "4.3.*",
-        "symfony/yaml": "4.3.*",
-        "uvdesk/composer-plugin": "^1.0",
-        "uvdesk/core-framework": "^1.0",
-        "uvdesk/extension-framework": "^1.0",
-        "uvdesk/automation-bundle": "^1.0",
-        "uvdesk/support-center-bundle": "^1.0",
-        "uvdesk/mailbox-component": "^1.0"
+        "symfony/translation": "4.4.*",
+        "symfony/twig-bundle": "4.4.*",
+        "symfony/validator": "4.4.*",
+        "symfony/var-dumper": "4.4.*",
+        "symfony/web-link": "4.4.*",
+        "symfony/yaml": "4.4.*",
+        "uvdesk/composer-plugin": "@dev",
+        "uvdesk/extension-framework": "dev-master",
+        "uvdesk/automation-bundle": "@dev",
+        "uvdesk/core-framework": "@dev",
+        "uvdesk/support-center-bundle": "dev-master",
+        "uvdesk/mailbox-component": "@dev"
     },
     "require-dev": {
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.0",
         "symfony/profiler-pack": "*",
         "symfony/test-pack": "*",
-        "symfony/web-server-bundle": "4.3.*",
-        "uvdesk/api-bundle": "^1.0@dev"
+        "symfony/web-server-bundle": "4.4.*",
+        "uvdesk/api-bundle": "@dev"
     },
     "config": {
         "preferred-install": {
@@ -56,9 +53,33 @@
         },
         "sort-packages": true
     },
+    "repositories": [{
+        "type": "path",
+        "url": "../components/composer-plugin"
+    }, {
+        "type": "path",
+        "url": "../components/extension-framework"
+    }, {
+        "type": "path",
+        "url": "../components/automation-bundle"
+    }, {
+        "type": "path",
+        "url": "../components/support-center-bundle"
+    }, {
+        "type": "path",
+        "url": "../components/mailbox-component"
+    }, {
+        "type": "path",
+        "url": "../components/api-bundle"
+    }, {
+        "type": "path",
+        "url": "../components/core-framework"
+    }],
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/",
+            "UVDesk\\CommunityPackages\\UVDesk\\CustomerMoreTickets\\": "apps/uvdesk/customer-previous-tickets/src/",
+            "UVDesk\\CommunityPackages\\UVDesk\\TodoList\\": "apps/uvdesk/todo-list/src/"
         }
     },
     "autoload-dev": {
@@ -80,19 +101,21 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        }
     },
     "conflict": {
         "symfony/symfony": "*"
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "1.0.x-dev"
-        },
         "symfony": {
             "allow-contrib": false,
-            "require": "4.3.*"
+            "require": "4.4.*"
         }
     },
-    "minimum-stability": "dev"
+    "prefer-stable": true,
+    "minimum-stability": "stable"
 }
