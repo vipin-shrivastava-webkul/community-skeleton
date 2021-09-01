@@ -25,6 +25,7 @@
         "symfony/framework-bundle": "4.4.*",
         "symfony/http-client": "4.4.*",
         "symfony/intl": "4.4.*",
+        "symfony/mime": "4.4.*",
         "symfony/monolog-bundle": "^3.6.0",
         "symfony/process": "4.4.*",
         "symfony/property-access": "^4.4",
@@ -130,3 +131,4 @@
     "prefer-stable": true,
     "minimum-stability": "stable"
 }
+
